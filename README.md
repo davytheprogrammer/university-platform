@@ -1,4 +1,4 @@
-# Advanced University Platform - COMP 305 Enhanced Assignment
+#  University Platform - COMP 305  Assignment
 
 ## Overview
 This project implements an advanced backend Java system for a University Online Learning Platform, demonstrating enterprise-level OOP concepts, design patterns, concurrent programming, and modern Java features.
