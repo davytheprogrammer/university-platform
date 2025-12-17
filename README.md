@@ -1,70 +1,94 @@
-# University Platform Core Components - COMP 305 Assignment
+# Advanced University Platform - COMP 305 Enhanced Assignment
 
 ## Overview
-This project implements the backend Java code for a University Online Learning Platform, demonstrating core OOP concepts, abstraction, interfaces, collections, exception handling, and I/O operations.
+This project implements an advanced backend Java system for a University Online Learning Platform, demonstrating enterprise-level OOP concepts, design patterns, concurrent programming, and modern Java features.
 
-## Components Implemented
+## Advanced Features Implemented
 
-### Part I: Core OOP Concepts
-- **Student Class**: Encapsulation with private attributes, constructors, getters/setters
-- **Course Class**: ArrayList management, student enrollment
-- **OnlineCourse Class**: Inheritance, method overriding, dynamic binding demonstration
+### Design Patterns
+- **Builder Pattern**: Student class with fluent API and validation
+- **Factory Pattern**: OnlineCourse creation with method chaining
+- **Observer Pattern**: Course event notifications
+- **Immutable Objects**: Thread-safe Student instances
 
-### Part II: Abstraction and Interfaces
-- **Payable Interface**: Contract for payment calculations
-- **FullTimeLecturer & PartTimeLecturer**: Interface implementations
-- **Comparable Interface**: Natural ordering for Student objects
+### Modern Java Features
+- **Generics**: Type-safe Course<T extends Student> collections
+- **Enums**: Platform types, lecturer ranks, course features
+- **Streams & Lambdas**: Functional programming with parallel processing
+- **Optional**: Null-safe grade retrieval
+- **BigDecimal**: Precise financial calculations
+- **CompletableFuture**: Asynchronous operations
 
-### Part III: Collections and Exception Handling
-- **HashMap**: Student grades storage and iteration
-- **GradeNotFoundException**: Custom exception class
-- **Exception Handling**: Try-catch blocks with custom exceptions
+### Concurrent Programming
+- **Thread-Safe Collections**: ConcurrentHashMap for shared data
+- **ExecutorService**: Managed thread pool for concurrent tasks
+- **CountDownLatch**: Synchronization primitives
+- **Parallel Streams**: Multi-core processing utilization
 
-### Part IV: I/O and Database Integration
-- **File Processing**: Character streams with BufferedReader/Writer
-- **JDBC Integration**: Database validation with PreparedStatement
+### Enterprise Patterns
+- **Validation**: Input validation with custom exceptions
+- **Immutability**: Thread-safe object design
+- **Functional Interfaces**: @FunctionalInterface annotations
+- **Default Methods**: Interface evolution without breaking changes
 
-## Key Concepts Demonstrated
+## Key Components
 
-### Dynamic Binding
-The Main class shows how a Course reference can hold an OnlineCourse object, and the overridden showDetails() method is called at runtime.
-
-### Comparable Interface
-Enables natural ordering of Student objects based on regNo, allowing use with Collections.sort().
-
-### Stream Types
-- **Byte Streams**: Handle raw binary data (InputStream/OutputStream)
-- **Character Streams**: Handle text data with character encoding (Reader/Writer)
-
-### Multithreading Considerations
-For concurrent file processing:
-- Use Thread class or Runnable interface
-- Synchronization needed for shared variables (word count)
-- Consider thread-safe collections for shared data
-
-### GUI Components (Login Sketch)
-```
-JFrame (Main Window)
-├── JLabel ("Registration Number:")
-├── JTextField (regNoField)
-├── JLabel ("Password:")
-├── JPasswordField (passwordField)
-└── JButton ("Login") + ActionListener
+### Enhanced Student Class
+```java
+Student student = new Student.Builder()
+    .regNo("S001")
+    .name("Alice Johnson")
+    .email("alice@university.edu")
+    .build();
 ```
 
-## Running the Code
+### Advanced Course Management
+```java
+OnlineCourse<Student> course = OnlineCourse.<Student>create("COMP305", "Advanced OOP", Platform.ZOOM)
+    .withFeatures(Feature.VIDEO_RECORDING, Feature.BREAKOUT_ROOMS);
+```
+
+### Concurrent Grade Processing
+- Thread-safe grade updates across multiple courses
+- Asynchronous file processing with CompletableFuture
+- Parallel stream operations for bulk data processing
+
+### Enhanced Payment System
+- BigDecimal for precise financial calculations
+- Tax calculation with default interface methods
+- Overtime calculation for part-time lecturers
+- Rank-based salary with experience bonuses
+
+## Performance Features
+- **Lazy Initialization**: Resources created on-demand
+- **Immutable Collections**: Defensive copying with unmodifiable views
+- **Stream Optimization**: Parallel processing for large datasets
+- **Connection Pooling**: Simulated database connection management
+
+## Security Enhancements
+- **Input Validation**: Email regex, range checking
+- **SQL Injection Prevention**: PreparedStatement usage
+- **Password Hashing**: SHA-256 encryption in database queries
+- **Immutable State**: Thread-safe object design
+
+## Concurrency Demonstrations
+1. **Multi-threaded Grade Updates**: Concurrent HashMap operations
+2. **Asynchronous File Processing**: Non-blocking I/O operations
+3. **Parallel Stream Processing**: Multi-core utilization
+4. **Synchronization Primitives**: CountDownLatch coordination
+
+## Running the Enhanced Code
 ```bash
 javac *.java
 java Main
 ```
 
-## Files Structure
-- Student.java - Student class with Comparable
-- Course.java - Base course class
-- OnlineCourse.java - Inherited online course
-- Payable.java - Payment interface
-- FullTimeLecturer.java - Full-time payment implementation
-- PartTimeLecturer.java - Part-time payment implementation
-- GradeNotFoundException.java - Custom exception
-- Main.java - Main demonstration class
-- input.txt - Sample input for file processing
+## Advanced Concepts Demonstrated
+- Functional programming with method references
+- Stream collectors and custom aggregations
+- Concurrent collections and atomic operations
+- Asynchronous programming patterns
+- Enterprise-level error handling
+- Modern Java best practices (Java 8+)
+
+This implementation showcases production-ready Java code suitable for enterprise applications, demonstrating advanced OOP principles, design patterns, and concurrent programming techniques.
